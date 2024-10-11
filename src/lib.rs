@@ -64,8 +64,37 @@ mod tests {
     fn test_roc_auc() {
         let scores = vec![0.9, 0.8, 0.7, 0.6, 0.5];
         let targets = vec![1, 1, 0, 1, 0];
-        let roc_metrics = RocMetrics::new(&scores, &targets);
+        let mut roc_metrics = RocMetrics::new(&scores, &targets);
         let auc = roc_metrics.compute_roc_auc();
-        assert!((auc - 0.75).abs() < 1e-6);
+        assert!((auc - 0.8333333730697632).abs() < 1e-6);
+    }
+
+    #[test]
+    fn test_binary_roc() {
+        let scores = vec![0.9, 0.8, 0.7, 0.6, 0.5];
+        let targets = vec![1, 1, 0, 1, 0];
+        let roc_metrics = RocMetrics::new(&scores, &targets);
+        let roc_data = roc_metrics.binary_roc();
+        assert_eq!(roc_data.tps, vec![0, 1, 2, 2, 3, 3]);
+        assert_eq!(roc_data.fps, vec![0, 0, 0, 1, 1, 2]);
+    }
+
+    #[test]
+    fn test_binary_roc_edge_cases() {
+        // All positive
+        let scores1 = vec![0.9, 0.8, 0.7];
+        let targets1 = vec![1, 1, 1];
+        let roc_metrics1 = RocMetrics::new(&scores1, &targets1);
+        let roc_data1 = roc_metrics1.binary_roc();
+        assert_eq!(roc_data1.tps, vec![0, 1, 2, 3]);
+        assert_eq!(roc_data1.fps, vec![0, 0, 0, 0]);
+
+        // All negative
+        let scores2 = vec![0.9, 0.8, 0.7];
+        let targets2 = vec![0, 0, 0];
+        let roc_metrics2 = RocMetrics::new(&scores2, &targets2);
+        let roc_data2 = roc_metrics2.binary_roc();
+        assert_eq!(roc_data2.tps, vec![0, 0, 0, 0]);
+        assert_eq!(roc_data2.fps, vec![0, 1, 2, 3]);
     }
 }

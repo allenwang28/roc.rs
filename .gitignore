@@ -2,6 +2,7 @@
 **/*.rs.bk
 *.pyo
 *.pyc
-__pycache__
+**/__pycache__/**
 *.so
 *.egg-info
+.pytest_cache/

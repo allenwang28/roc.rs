@@ -3,7 +3,7 @@ requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "roc_metrics"
+name = "roc_rs"
 version = "0.1.0"
 description = "A fast ROC metrics calculator implemented in Rust"
 authors = [{name = "Allen Wang", email = "allencwang@google.com"}]
