@@ -1,6 +1,6 @@
 # roc_rs
 
-[![CI](https://github.com/allenwang28/roc_rs/actions/workflows/ci.yml/badge.svg)](https://github.com/allenwang28/roc_rs/actions/workflows/ci.yml)
+[![CI](https://github.com/allenwang28/roc.rs/actions/workflows/ci.yml/badge.svg)](https://github.com/allenwang28/roc.rs/actions/workflows/ci.yml)
 
 `roc_rs` is a fast Receiver Operating Characteristic (ROC) metrics calculator implemented in Rust with Python bindings.
 It provides efficient computation of ROC curves and Area Under the Curve (AUC) for binary classification problems.
