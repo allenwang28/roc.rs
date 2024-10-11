@@ -1,1 +1,7 @@
 **/target/**
+**/*.rs.bk
+*.pyo
+*.pyc
+__pycache__
+*.so
+*.egg-info

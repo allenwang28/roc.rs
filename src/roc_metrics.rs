@@ -1,13 +1,12 @@
 extern crate ndarray;
 extern crate rayon;
 
-use ndarray::{Array1, ArrayView1};
 use rayon::prelude::*;
 use std::cmp::Ordering;
 
 // Struct to represent a prediction element with score and target.
 #[derive(Debug, Clone)]
-struct PredictElem {
+pub struct PredictElem {
     score: f32,
     target: i32,
 }

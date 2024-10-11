@@ -1,0 +1,23 @@
+[package]
+name = "roc_metrics"
+version = "0.1.0"
+edition = "2021"
+authors = ["Allen Wang <allencwang@google.com"]
+description = "A fast ROC metrics calculator implemented in Rust"
+readme = "README.md"
+
+[lib]
+name = "roc_rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+ndarray = "0.15"
+rayon = "1.7"
+pyo3 = { version = "0.19", features = ["extension-module"] }
+numpy = "0.19"
+
+[dev-dependencies]
+pretty_assertions = "1.0"
+
+[build-dependencies]
+maturin = "1.0"
