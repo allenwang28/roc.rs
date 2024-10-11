@@ -89,3 +89,16 @@ maturin develop
 
 ## License
 This project is licensed under the MIT license - see the LICENSE file for details.
+
+
+## Continuous Integration
+
+This project uses GitHub Actions for continuous integration. The CI pipeline:
+
+- Runs on Ubuntu, Windows, and macOS
+- Tests against Python versions 3.7, 3.8, 3.9, and 3.10
+- Runs Rust tests
+- Runs Python tests
+- Executes the benchmark script
+
+You can see the detailed CI configuration in `.github/workflows/ci.yml`.

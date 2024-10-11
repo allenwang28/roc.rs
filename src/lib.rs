@@ -55,3 +55,17 @@ fn roc_rs(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyRocData>()?;
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_roc_auc() {
+        let scores = vec![0.9, 0.8, 0.7, 0.6, 0.5];
+        let targets = vec![1, 1, 0, 1, 0];
+        let roc_metrics = RocMetrics::new(&scores, &targets);
+        let auc = roc_metrics.compute_roc_auc();
+        assert!((auc - 0.75).abs() < 1e-6);
+    }
+}
